@@ -1,23 +1,20 @@
-OBJETOS PERDIDOS — PÁGINA DE INSTALAÇÃO
+OBJETOS PERDIDOS — AJUSTE PARA FICAR COMO O EXPAND RESERVAS
 
-Envie TODOS estes arquivos para a raiz de um repositório do GitHub:
-- index.html
-- app.html
+Envie estes arquivos para o mesmo repositório GitHub:
+- instalar.html
+- abrir.html
 - manifest.webmanifest
-- sw.js
 - icon-192.png
 - icon-512.png
 - apple-touch-icon.png
 
-Depois, no GitHub:
-1. Abra Settings.
-2. Abra Pages.
-3. Em Build and deployment, escolha "Deploy from a branch".
-4. Selecione a branch "main" e a pasta "/ (root)".
-5. Clique em Save.
-6. Aguarde o GitHub fornecer o endereço publicado.
+Substitua os arquivos de mesmo nome, se o GitHub perguntar.
 
-O endereço do GitHub Pages será o LINK DE INSTALAÇÃO.
+Depois use ESTE link de instalação:
+https://infoedirecaoaf-cmd.github.io/Objetos-Perdidos/instalar.html?v=2
 
-Web App configurado:
-https://script.google.com/macros/s/AKfycbwSlmJrmQNIvK3fqJV4pm7p6oTmlaVOzFlNNI1VEEvvzBZOy735fXtxagnurgMuDYe9EA/exec
+IMPORTANTE NO IPHONE:
+- Abra o link diretamente no Safari.
+- Se já tentou adicionar antes e ficou sem ícone, apague o atalho antigo.
+- Abra novamente o link com ?v=2.
+- Compartilhar > Adicionar à Tela de Início.
