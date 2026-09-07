@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b57d0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Objetos Perdidos">
+
+  <title>Instalar Objetos Perdidos</title>
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f9;
+      color: #202124;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: #fff;
+      border: 1px solid #e0e3e7;
+      border-radius: 18px;
+      padding: 28px 22px;
+      box-shadow: 0 8px 28px rgba(60,64,67,.15);
+      text-align: center;
+    }
+    .logo {
+      width: 128px;
+      height: 128px;
+      border-radius: 28px;
+      box-shadow: 0 5px 18px rgba(11,87,208,.22);
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 26px;
+      color: #174ea6;
+    }
+    .sub {
+      margin: 8px 0 22px;
+      color: #5f6368;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .btn {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 15px 18px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .primario {
+      background: #0b57d0;
+      color: #fff;
+    }
+    .secundario {
+      background: #e8f0fe;
+      color: #174ea6;
+    }
+    .box {
+      margin-top: 22px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #f8fafd;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .box strong { color: #174ea6; }
+    .oculto { display:none; }
+    .rodape {
+      margin-top: 20px;
+      color: #80868b;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="./icon-512.png" alt="Ícone Objetos Perdidos">
+    <h1>Instalar Objetos Perdidos</h1>
+    <p class="sub">Sistema de controle de objetos perdidos da Academia da Fé</p>
+
+    <button id="btnInstalar" class="btn primario oculto">📲 Instalar aplicativo</button>
+
+    <a class="btn secundario" href="https://script.google.com/macros/s/AKfycbwSlmJrmQNIvK3fqJV4pm7p6oTmlaVOzFlNNI1VEEvvzBZOy735fXtxagnurgMuDYe9EA/exec" target="_self">
+      Abrir Objetos Perdidos
+    </a>
+
+    <div id="ios" class="box oculto">
+      <strong>iPhone / iPad</strong><br>
+      1. Abra esta página no <strong>Safari</strong>.<br>
+      2. Toque no botão <strong>Compartilhar</strong>.<br>
+      3. Escolha <strong>Adicionar à Tela de Início</strong>.<br>
+      4. Toque em <strong>Adicionar</strong>.
+    </div>
+
+    <div id="android" class="box oculto">
+      <strong>Android</strong><br>
+      Toque em <strong>Instalar aplicativo</strong> acima. Se o botão não aparecer,
+      abra o menu do Chrome (⋮) e escolha <strong>Adicionar à tela inicial</strong>
+      ou <strong>Instalar app</strong>.
+    </div>
+
+    <div id="desktop" class="box oculto">
+      <strong>Computador</strong><br>
+      Você pode abrir o sistema pelo botão acima. Em navegadores compatíveis,
+      também poderá aparecer a opção de instalar na barra de endereço.
+    </div>
+
+    <div class="rodape">Academia da Fé — Objetos Perdidos</div>
+  </main>
+
+  <script>
+    const ua = navigator.userAgent || "";
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+
+    document.getElementById(isIOS ? "ios" : isAndroid ? "android" : "desktop")
+      .classList.remove("oculto");
+
+    let deferredPrompt = null;
+    const btn = document.getElementById("btnInstalar");
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      btn.classList.remove("oculto");
+    });
+
+    btn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      btn.classList.add("oculto");
+    });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

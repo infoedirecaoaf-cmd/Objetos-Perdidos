@@ -1,0 +1,23 @@
+OBJETOS PERDIDOS — PÁGINA DE INSTALAÇÃO
+
+Envie TODOS estes arquivos para a raiz de um repositório do GitHub:
+- index.html
+- app.html
+- manifest.webmanifest
+- sw.js
+- icon-192.png
+- icon-512.png
+- apple-touch-icon.png
+
+Depois, no GitHub:
+1. Abra Settings.
+2. Abra Pages.
+3. Em Build and deployment, escolha "Deploy from a branch".
+4. Selecione a branch "main" e a pasta "/ (root)".
+5. Clique em Save.
+6. Aguarde o GitHub fornecer o endereço publicado.
+
+O endereço do GitHub Pages será o LINK DE INSTALAÇÃO.
+
+Web App configurado:
+https://script.google.com/macros/s/AKfycbwSlmJrmQNIvK3fqJV4pm7p6oTmlaVOzFlNNI1VEEvvzBZOy735fXtxagnurgMuDYe9EA/exec
